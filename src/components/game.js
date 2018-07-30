@@ -1,5 +1,4 @@
 import React from 'react';
-import {connect} from 'react-redux'
 
 import Header from './header';
 import GuessSection from './guess-section';
@@ -7,7 +6,7 @@ import StatusSection from './status-section';
 import InfoSection from './info-section';
 
 
-class Game extends React.Component {
+export default class Game extends React.Component {
   // constructor(props) {
   //   super(props);
   //   this.state = {
@@ -56,10 +55,10 @@ class Game extends React.Component {
   //     guesses: [...this.state.guesses, guess]
   //   });
 
-    // We typically wouldn't touch the DOM directly like this in React
-    // but this is the best way to update the title of the page,
-    // which is good for giving screen-reader users
-    // instant information about the app.
+  // We typically wouldn't touch the DOM directly like this in React
+  // but this is the best way to update the title of the page,
+  // which is good for giving screen-reader users
+  // instant information about the app.
   //   document.title = feedback ? `${feedback} | Hot or Cold` : 'Hot or Cold';
   // }
 
@@ -82,33 +81,16 @@ class Game extends React.Component {
 
   render() {
     // const { feedback, guesses, auralStatus } = this.state;
-    const guessCount = this.props.guesses.length;
 
     return (
       <div>
-        <Header
-          onRestartGame={() => this.restartGame()}
-          onGenerateAuralUpdate={() => this.generateAuralUpdate()}
-        />
+        <Header />
         <main role="main">
-          <GuessSection
-            feedback={this.props.feedback}
-            guessCount={guessCount}
-            onMakeGuess={guess => this.makeGuess(guess)}
-          />
-          <StatusSection guesses={this.props.guesses} 
-            auralStatus={this.props.auralStatus}
-          />
+          <GuessSection />
+          <StatusSection />
           <InfoSection />
         </main>
       </div>
     );
   }
 }
-export const mapStateToProps = state => ({
-  guesses: state.guesses,
-  feedback: state.feedback,
-  auralStatus: state.auralStatus
-})
-
-export default connect(mapStateToProps)(Game);

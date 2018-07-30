@@ -1,9 +1,10 @@
 import React from 'react';
-
+import {connect} from 'react-redux';
 import './top-nav.css';
-import {restartGame, makeGuess} from '../actions'
+import {restartGame} from '../actions';
 
-export default function TopNav(props) {
+
+function TopNav(props) {
   return (
     <nav>
       <ul className="clearfix">
@@ -41,3 +42,5 @@ export default function TopNav(props) {
     </nav>
   );
 }
+
+export default connect()(TopNav);
