@@ -26,7 +26,9 @@ export default class Game extends React.Component {
   }
 
   makeGuess(guess) {
+
     guess = parseInt(guess, 10);
+    
     if (isNaN(guess)) {
       this.setState({ feedback: 'Please enter a valid number' });
       return;
