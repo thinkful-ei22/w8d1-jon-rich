@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './top-nav.css';
+import {restartGame, makeGuess} from '../actions'
 
 export default function TopNav(props) {
   return (
@@ -20,7 +21,7 @@ export default function TopNav(props) {
             href="#feedback"
             className="new"
             aria-label="Start a new game"
-            onClick={() => props.onRestartGame()}
+            onClick={() => props.dispatch(restartGame())}
           >
             + New Game
           </a>
